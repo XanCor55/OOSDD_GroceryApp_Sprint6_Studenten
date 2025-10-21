@@ -21,7 +21,7 @@
             <ShellContent Title="Product categoriën" ContentTemplate="{DataTemplate local:CategoriesView}" />
         </Tab>
         <Tab Title="Afrekenen" Icon="grocerylist.png">
-            <ShellContent Title="Afrekenen" ContentTemplate="{DataTemplate local:CategoriesView}" />
+            <ShellContent Title="Afrekenen" ContentTemplate="{DataTemplate local:GroceryListsView}" />
         </Tab>
     </TabBar>
 </Shell>

@@ -5,5 +5,5 @@ public partial class AfrekenenView : ContentPage
 	public AfrekenenView()
 	{
 		InitializeComponent();
-	}
+    }
 }

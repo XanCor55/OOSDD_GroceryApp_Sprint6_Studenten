@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Grocery.App.Views.AfrekenenView"
+             xmlns:vm="clr-namespace:Grocery.App.ViewModels"
+             xmlns:m="clr-namespace:Grocery.Core.Models;assembly=Grocery.Core"
+             x:DataType="vm:GroceryListViewModel"
+             Title="AfrekenenView">
+
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="Afrekenen" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
+    
+    <Border Stroke="#C49B33" StrokeThickness="4" Padding="10" Margin="10" HorizontalOptions="Center">
+        <CollectionView ItemsSource="{Binding GroceryLists}" ItemsLayout="HorizontalList" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:GroceryList">
+                    <StackLayout Padding="10" Margin="5">
+                        
+                        <Label Text="{Binding Name}" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            
+                        <CollectionView ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type vm:AfrekenenViewModel}}, Path=MyGroceryListItems}"
+                                SelectionMode="None">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="m:GroceryListItem">
+                                    <Label Text="{Binding Product.Name}"/>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <Button 
+                            Text="Betaal"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start"
+                            Clicked="OnButtonClicked"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Border>
+</ContentPage>
